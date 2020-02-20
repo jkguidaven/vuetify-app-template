@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
+    "test:e2e": "vue-cli-service test:e2e --headless",
     "lint": "vue-cli-service lint && stylelint --fix 'src/**/*.{vue,scss}'",
     "new": "cross-env HYGEN_TMPLS=generators hygen new"
   },
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@mapbox/stylelint-processor-arbitrary-tags": "^0.2.0",
     "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.2.0",
     "@vue/cli-plugin-eslint": "~4.2.0",
     "@vue/cli-plugin-router": "~4.2.0",
     "@vue/cli-plugin-unit-jest": "~4.2.0",
