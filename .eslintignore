@@ -1,0 +1,5 @@
+/node_modules/
+/android/
+/dist/
+/tests/unit/coverage/
+/tests/unit/
