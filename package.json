@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --headless",
+    "test": "yarn test:unit && yarn test:e2e",
     "lint": "vue-cli-service lint && stylelint --fix 'src/**/*.{vue,scss}'",
     "new": "cross-env HYGEN_TMPLS=generators hygen new"
   },
@@ -36,6 +37,8 @@
     "eslint-config-vuetify": "^0.5.0",
     "eslint-plugin-vue": "^6.1.2",
     "hygen": "^5.0.3",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
     "stylelint": "11.0.x",
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-recess-order": "^2.0.3",

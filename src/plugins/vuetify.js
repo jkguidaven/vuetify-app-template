@@ -8,9 +8,9 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: '#ee44aa',
-        secondary: '#424242',
-        accent: '#82B1FF',
+        primary: '#d35400',
+        secondary: '#ecf0f1',
+        accent: '#ecf0f1',
         error: '#FF5252',
         info: '#2196F3',
         success: '#4CAF50',
