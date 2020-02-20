@@ -5,11 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "new" : "cross-env HYGEN_TMPLS=generators hygen new"
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
     "core-js": "^3.6.4",
+    "hygen": "^5.0.3",
     "roboto-fontface": "*",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
