@@ -19,7 +19,7 @@ module.exports = (on, config) => ({
    * ===
    */
   env: {
-    CI: process.env.CI
+    CI: process.env.CI,
   },
   /*
    * ===
@@ -66,6 +66,5 @@ module.exports = (on, config) => ({
   videoUploadOnPasses: true,
   videoCompression: 32,
   videosFolder: 'tests/e2e/videos',
-  screenshotsFolder: 'tests/e2e/screenshots'
-});
-
+  screenshotsFolder: 'tests/e2e/screenshots',
+})
