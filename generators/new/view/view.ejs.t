@@ -32,6 +32,5 @@ export default {
 
 if (useStyles) { %>
 <style lang="scss" scoped>
-@import '@design';
 </style>
 <% } %>
