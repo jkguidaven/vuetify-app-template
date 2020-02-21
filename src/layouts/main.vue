@@ -5,12 +5,8 @@
     <AppBar />
 
     <!-- Sizes your content based upon application components -->
-    <VContent>
-      <!-- Provides the application the proper gutter -->
-      <VContainer fluid>
-        <!-- If using vue-router -->
-        <slot />
-      </VContainer>
+    <VContent app>
+      <slot />
     </VContent>
   </VApp>
 </template>
@@ -35,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  margin: 0 auto;
+.wrapper {
+  min-height: 100%;
 }
 </style>

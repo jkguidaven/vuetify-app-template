@@ -1,22 +1,22 @@
 <template>
-  <div class="font-weight-bold grey--text my-3 mx-0 pa-0">
+  <div class="font-weight-bold grey--text my-3">
     <span
       v-for="(link, index) in links"
       :key="`link-${index}`"
+      class="mr-3"
     >
-      <VBtn
-        text
+      <RouterLink
+        class="mr-3"
         color="primary"
-        :ripple="false"
-        class="ma-0 pa-0"
+        :to="link.path"
       >
-        {{ link }}
-      </VBtn>
+        {{ link.label }}
+      </RouterLink>
 
       /
     </span>
 
-    <span class="ml-3">
+    <span>
       {{ current }}
     </span>
   </div>
@@ -26,18 +26,32 @@
 export default {
   computed: {
     path () {
-      return this.$route.path.slice(-1) === '/'
+      return (this.$route.path.slice(-1) === '/'
         ? this.$route.path.slice(0, -1)
-        : this.$route.path
+        : this.$route.path).split('/')
     },
 
     links () {
-      return this.path.split('/').slice(1, -1)
+      const items = this.path.slice(1, -1)
+      let path = ''
+      return items.map((link) => {
+        path = `${path}/${link}`
+        return {
+          label: link.toUpperCase(),
+          path,
+        }
+      })
     },
 
     current () {
-      return (this.path.split('/').slice(-1)[0] || 'Home').toUpperCase()
+      return (this.path.slice(-1)[0] || 'Home').toUpperCase()
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.router-link-active {
+  text-decoration: none;
+}
+</style>

@@ -20,7 +20,7 @@ const routes = [
         component: () => import('@views/main/items/index.vue'),
       },
       {
-        path: 'items/:id',
+        path: 'items/:id/:action?',
         name: 'item-detail',
         component: () => import('@views/main/items/details.vue'),
       },

@@ -17,12 +17,15 @@
     </VAppBar>
 
     <VList class="ma-0 pa-0">
-      <VSubheader v-if="expand">
+      <VSubheader
+        v-if="expand"
+        class="text-no-wrap"
+      >
         Main Menu
       </VSubheader>
       <VIcon
         v-else
-        class="ma-3"
+        class="mx-4 my-3"
       >
         mdi-dots-horizontal
       </VIcon>
@@ -31,6 +34,7 @@
         <VListItem
           v-for="item in mainItems"
           :key="item.title"
+          :href="item.href"
           link
         >
           <VListItemIcon>
@@ -50,6 +54,7 @@
           <VListItem
             v-for="item in subItems"
             :key="item.title"
+            :href="item.href"
             link
           >
             <VListItemIcon>
@@ -74,8 +79,9 @@ export default {
 
       mainItems: [
         {
-          icon: 'mdi-cube',
-          title: 'Inventory',
+          icon: 'mdi-home',
+          title: 'Home',
+          href: 'home',
         },
       ],
 
@@ -83,10 +89,7 @@ export default {
         {
           icon: 'mdi-cube',
           title: 'Items',
-        },
-        {
-          icon: 'mdi-circle',
-          title: 'Supplier',
+          href: 'items',
         },
       ],
     }
@@ -94,7 +97,7 @@ export default {
 
   computed: {
     toggleIcon () {
-      return this.expand ? 'mdi-chevron-right' : 'mdi-chevron-left'
+      return this.notExpand ? 'mdi-chevron-right' : 'mdi-chevron-left'
     },
 
     notExpand () {

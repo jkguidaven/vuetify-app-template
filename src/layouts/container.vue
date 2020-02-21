@@ -1,11 +1,16 @@
 <template>
-  <div>
+  <VContainer
+    class="wrapper d-flex flex-column"
+    fluid
+  >
     <NavigationHeader />
 
-    <VContainer fluid>
-      <slot />
-    </VContainer>
-  </div>
+    <slot />
+
+    <VFooter class="mt-auto">
+      {{ new Date().getFullYear() }} — <strong>SeriousDev</strong>
+    </VFooter>
+  </VContainer>
 </template>
 
 <script>
@@ -19,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  margin: 0 auto;
+.wrapper {
+  min-height: 100%;
 }
 </style>
