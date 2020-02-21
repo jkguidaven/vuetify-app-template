@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    Home
+    <RouterView />
   </Layout>
 </template>
 
@@ -9,10 +9,10 @@ import Layout from '@layouts/main.vue'
 
 export default {
   page: {
-    title: 'Home',
+    title: 'Main Index',
     meta: [{
       name: 'description',
-      content: 'The Home page.',
+      content: 'The Main Index page.',
     }],
   },
 
