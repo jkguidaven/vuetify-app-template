@@ -13,6 +13,7 @@
 
     <VBtn
       icon
+      :href="'/notification'"
     >
       <VIcon>mdi-bell</VIcon>
     </VBtn>

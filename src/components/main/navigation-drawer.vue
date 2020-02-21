@@ -1,23 +1,68 @@
 <template>
   <VNavigationDrawer
     app
-    :mini-variant.sync="expand"
+    :mini-variant.sync="notExpand"
     color="secondary"
   >
     <VAppBar
       dark
-      color="primary"
+      color="primary darken-1"
       flat
     >
-      <VSpacer />
+      <VSpacer v-if="expand" />
 
-      <Vbtn
-        icon
-        @click="expand = !expand"
-      >
-        <VIcon>{{ toggleIcon }}</VIcon>
-      </Vbtn>
+      <VIcon @click="expand = !expand">
+        {{ toggleIcon }}
+      </VIcon>
     </VAppBar>
+
+    <VList class="ma-0 pa-0">
+      <VSubheader v-if="expand">
+        Main Menu
+      </VSubheader>
+      <VIcon
+        v-else
+        class="ma-3"
+      >
+        mdi-dots-horizontal
+      </VIcon>
+
+      <VListItemGroup nav>
+        <VListItem
+          v-for="item in mainItems"
+          :key="item.title"
+          link
+        >
+          <VListItemIcon>
+            <VIcon>{{ item.icon }}</VIcon>
+          </VListItemIcon>
+
+          <VListItemContent class="text-left">
+            <VListItemTitle>{{ item.title }}</VListItemTitle>
+          </VListItemContent>
+        </VListItem>
+      </VListItemGroup>
+    </VList>
+
+    <template v-slot:append>
+      <VList class="ma-0 pa-0">
+        <VListItemGroup nav>
+          <VListItem
+            v-for="item in subItems"
+            :key="item.title"
+            link
+          >
+            <VListItemIcon>
+              <VIcon>{{ item.icon }}</VIcon>
+            </VListItemIcon>
+
+            <VListItemContent class="text-left">
+              <VListItemTitle>{{ item.title }}</VListItemTitle>
+            </VListItemContent>
+          </VListItem>
+        </VListItemGroup>
+      </VList>
+    </template>
   </VNavigationDrawer>
 </template>
 
@@ -26,12 +71,34 @@ export default {
   data () {
     return {
       expand: false,
+
+      mainItems: [
+        {
+          icon: 'mdi-cube',
+          title: 'Inventory',
+        },
+      ],
+
+      subItems: [
+        {
+          icon: 'mdi-cube',
+          title: 'Items',
+        },
+        {
+          icon: 'mdi-circle',
+          title: 'Supplier',
+        },
+      ],
     }
   },
 
   computed: {
     toggleIcon () {
-      return this.expand ? 'mdi-chevron-left' : 'mdi-chevron-right'
+      return this.expand ? 'mdi-chevron-right' : 'mdi-chevron-left'
+    },
+
+    notExpand () {
+      return !this.expand
     },
   },
 }
