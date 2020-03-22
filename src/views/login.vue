@@ -34,6 +34,7 @@
                 v-model="username"
                 label="Username"
                 prepend-inner-icon="mdi-account"
+                :disabled="processing"
                 outlined
                 @keypress.enter="$refs['password'].focus"
               />
@@ -44,6 +45,8 @@
                 label="Password"
                 type="password"
                 prepend-inner-icon="mdi-key"
+                :disabled="processing"
+
                 outlined
                 @keypress.enter="$refs['submit'].$el.focus"
               />
@@ -58,7 +61,8 @@
             <VBtn
               ref="submit"
               color="primary"
-              :disabled="!validInput"
+              :disabled="!validInput || processing"
+              :loading="processing"
               block
               large
               @click="submit"
@@ -66,6 +70,11 @@
             >
               Login
             </VBtn>
+
+            <span
+              v-if="error"
+              class="error--text mt-5 d-block"
+            >{{ error }}</span>
           </VCol>
         </VRow>
       </VCardText>
@@ -75,6 +84,7 @@
 
 <script>
 import Layout from '@layouts/blank.vue'
+import { mapState } from 'vuex'
 
 export default {
   page: {
@@ -98,14 +108,27 @@ export default {
   },
 
   computed: {
+    ...mapState('authentication', ['processing', 'error']),
+
     validInput () {
       return Boolean(this.username) && Boolean(this.password)
     },
   },
 
   methods: {
-    submit () {
-      this.$router.replace({ name: 'home' })
+    async submit () {
+      const result = await this.$store.dispatch('authentication/authenticate', {
+        username: this.username,
+        password: this.password,
+      })
+
+      if (result) {
+        await this.$store.dispatch('session/setToken', {
+          access_token: result,
+        })
+
+        this.$router.replace({ name: 'home' })
+      }
     },
   },
 }
